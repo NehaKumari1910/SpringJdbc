@@ -10,9 +10,9 @@
 
 <body>
 	<h1>Forgot Password</h1>
-	<form action="forgot" name="forgotform"  method="post" >
+	<form action="forgotpassword" name="forgotform"  method="post" modelAttribute="user" >
 		<label for="Email-Id">Email Id:</label> 
-		<input type="email" name="emailaddress" placeholder="email" /><br>
+		<input type="email" name="email" placeholder="email" /><br>
 		<input type="submit" value="submit">
 	</form>
 	

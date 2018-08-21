@@ -16,7 +16,7 @@
 <input type="password" name="password"/><br>
 <button type="submit"><a href="registration">SignUp</a></button>
 <input type="submit">
-<a href="forgot">Forgot password</a>
+<a href="forgotpasswordform">Forgot password</a>
 <%
 String errorMsg="";
 if(request.getAttribute("error")!=null)

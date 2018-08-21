@@ -10,7 +10,7 @@
 
 <body>
 	<h1>Reset Password</h1>
-	<form action="reset" name="resetform"  method="post" >
+	<form action="resetpassword" name="resetform"  method="post" modelAttribute="User">
  
 		<label for="password">Password:</label> 
 		<input type="password" name="password" placeholder="password" /><br>

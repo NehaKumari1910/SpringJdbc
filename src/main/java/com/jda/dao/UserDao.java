@@ -23,12 +23,12 @@ public class UserDao implements IUserDao{
 		try{
 			Connection connection=dataSource.getConnection();
 			String QUERY="insert into users(name,gender,age,user_name,email,password,phone) values(?,?,?,?,?,?,?)";
-			System.out.println("usrrrrrrrrrrr"+user.getName()+user.getGender()+user.getAge()+user.getUsername()+user.getEmail()+user.getPassword()+user.getPhone());
+			//System.out.println("usrrrrrrrrrrr"+user.getName()+user.getGender()+user.getAge()+user.getUsername()+user.getEmail()+user.getPassword()+user.getPhone());
 			Object objectArray[]=new Object[]{user.getName(),user.getGender(),user.getAge(),user.getUsername(),user.getEmail(),user.getPassword(),user.getPhone()};
 			JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-			System.out.println("hey there");
+		//	System.out.println("hey there");
 			int id=jdbcTemplate.update(QUERY, objectArray);
-			System.out.println("id"+id);
+		//	System.out.println("id"+id);
 			return id;
 		}
 		catch(Exception e)
@@ -56,5 +56,41 @@ public class UserDao implements IUserDao{
 						return user;
 					}
 		});
+	}
+	public int saveUUID(String email,String uuid)
+	{
+		//System.out.println(email+uuid);
+		try{
+		String query="UPDATE users SET uuid = ? WHERE email = ?";
+		Object objectArray[]=new Object[]{uuid,email};
+		JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
+	//	System.out.println("hey there");
+		int id=jdbcTemplate.update(query, objectArray);
+	//	System.out.println("id"+id);
+		return id;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return 0;
+	}
+	public int update(String password,String uuid)
+	{
+		try{
+			String query="UPDATE users SET password = ? WHERE uuid= ?";
+			Object objectArray[]=new Object[]{password,uuid};
+			JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
+		//	System.out.println("hey there");
+			int id=jdbcTemplate.update(query, objectArray);
+		//	System.out.println("id"+id);
+			return id;
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+			return 0;
+		
 	}
 }
